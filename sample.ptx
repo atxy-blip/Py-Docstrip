@@ -1,0 +1,99 @@
+% \iffalse meta-comment
+% !TeX program  = XeLaTeX
+% !TeX encoding = UTF-8
+%
+%<*internal>
+\begingroup
+  \def\NameOfLaTeXe{LaTeX2e}
+\expandafter\endgroup\ifx\NameOfLaTeXe\fmtname\else
+\csname fi\endcsname
+%</internal>
+%
+%<*install>
+\input docstrip.tex
+\keepsilent
+\askforoverwritefalse
+
+\generate{
+  \nopreamble\nopostamble
+  \file{source/task1a.py}    {\from{\jobname.ptx}{task1a}}
+  \file{source/task1b.py}    {\from{\jobname.ptx}{task1b}}
+}
+
+\obeyspaces
+
+\endbatchfile
+%</install>
+%
+%<*internal>
+\fi
+%</internal>
+%
+%<*driver>
+\documentclass{ptx-doc}
+\usepackage{physics2}
+\usephysicsmodule{diagmat}
+\begin{document}
+  \DocInput{\jobname.ptx}
+\end{document}
+%</driver>
+% \fi
+%
+% \title{高等数值分析\quad 第二次实验作业}
+% \id{2022}
+% \author{Yu Xiong}
+% \date{\zhtoday}
+% \maketitle
+%
+% \begin{problem}[1]
+% 构造例子特征值全部在右半平面时, 观察基本的 Arnoldi 方法和 GMRES 方
+% 法的数值性态, 和相应重新启动算法的收敛性.
+% \end{problem}
+%
+%
+% \begin{documentation}
+%
+% \section{第一题}
+%
+% 本题需要我们构造特征值的实部均为正值的输入矩阵。我们从特征值入手。考察下面的矩阵
+% \begin{equation}\label{eq:init}
+%   T_i = \begin{bmatrix} \alpha_i & -\beta_i \\ \beta_i & \alpha_i \end{bmatrix}
+% \end{equation}
+% 其中 $\alpha_i,\beta_i \in \mathbb{R}$。$T_i$ 的特征值为 $\alpha_i \pm \beta_i \I$，
+% 将其组合为对角阵，通过选择 $\alpha,\beta$ 的值即可得到具有特定共轭特征值的上三角矩阵$T$
+% \begin{equation}\label{eq:shangsanjiao}
+%   T = \bdiagmat[empty = {}]{T_1, T_2, \ddots, T_{\frac{n}{2}}}_{n\times n}
+% \end{equation}
+% 再通过实的 Schur 分解定理，我们选取一个正交阵 $U$ 来得到输入矩阵 $A$
+% \begin{equation}\label{eq:input}
+%   A = U ^T T U
+% \end{equation}
+%
+% \end{documentation}
+%
+%
+% \begin{implementation}
+% \appendix
+% \section{代码实现}
+%
+% \subsection{\texttt{task1a.py}}
+% \label{sssec:t1a}
+%
+%    \begin{macrocode}
+%<*task1a>
+import numpy as np
+%</task1a>
+%    \end{macrocode}
+%
+%
+% \subsection{\texttt{task1b.py}}
+% \label{sssec:t1b}
+%
+%    \begin{macrocode}
+%<*task1b>
+import matplotlib.pyplot as plt
+%</task1b>
+%    \end{macrocode}
+%
+%
+% \end{implementation}
