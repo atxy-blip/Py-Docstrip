@@ -30,7 +30,7 @@
 %</internal>
 %
 %<*driver>
-\documentclass{ptx-doc}
+\documentclass{ptxdoc}
 \usepackage{physics2}
 \usephysicsmodule{diagmat}
 \begin{document}
